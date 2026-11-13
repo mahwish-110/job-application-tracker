@@ -1,54 +1,130 @@
 Job Application Tracker
 
-A Python backend project to manage job applications using Flask and MySQL.
+A Python backend project built using Flask and MySQL to manage job applications securely through REST APIs.
 
-Features 
+Features
 
-. Add a new job application
-. View all job applications
+. User registration and login
+
+. Password hashing for secure password storage
+
+. JWT-based authentication
+
+. Protected API endpoints
+
+. Add new job applications
+
+. View job applications
+
 . Update application status
-. Delete a job application
-. Validate required fields and application status
-. Store application data in MYSQL
+
+. Delete job applications
+
+. User-specific application management
+
+. Input validation and error handling
+
+. MySQL database integration
+
 
 Technologies Used
 
-. Python
-. Flask
-. MySQl
-. MySql Connector
-. Python-dotenv
-. Requests for API testing
+.Python
+.Flask
+.MySQL
+.MySQL Connector
+.PyJWT
+.Werkzeug
+.Python-dotenv
+.Postman for API testing
 
-Installation
+Project Structure
 
-1. clone or download the project.
+job-application-tracker/
+│
+├── app.py
+├── db.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+└── test_api.py
 
-2. Create and activate a virtual environment.
+Installation and Setup
 
-3. Install the required packages:
-   pip install -r requirements.txt
+1.Clone the repository:
 
-4. Create a .env file in the project root
-   and add your own database credentials.
+git clone https://github.com/mahwish-110/job-application-tracker.git
 
-5.Run the Flask application:
+2.Navigate to the project folder:
 
-6.python -m flask --app app run --debug
+cd job-application-tracker
 
+3.Create a virtual environment:
+
+python -m venv .venv
+
+4.Activate the virtual environment (Windows):
+
+.\.venv\Scripts\Activate.ps1
+
+5.Install dependencies:
+
+pip install -r requirements.txt
+
+6.Create a MySQL database named job_tracker.
+
+7.Create a .env file in the project root and add your own configuration:
+
+DB_HOST=localhost
+DB_USER=your_mysql_username
+DB_PASSWORD=your_mysql_password
+DB_NAME=job_tracker
+SECRET_KEY=your_secret_key
+
+Important: Never upload your actual .env file or secret keys to GitHub.
+
+8.Run the Flask application:
+
+python -m flask --app app run --debug
 
 API Endpoints
 
-| Method | Endpoint | Purpose |
+
+| Method | Endpoint | Description |
 |---|---|---|
+| GET | `/api/health` | Check API status |
+| GET | `/api/test-db` | Test database connection |
+| POST | `/api/register` | Register a new user |
+| POST | `/api/login` | Authenticate user |
+| GET | `/api/profile` | Get logged-in user profile |
 | GET | `/api/applications` | View applications |
 | POST | `/api/applications` | Add an application |
-| PUT | `/api/applications/<id>` | Update application status |
+| PUT | `/api/applications/<id>` | Update an application |
 | DELETE | `/api/applications/<id>` | Delete an application |
 
 
-Note
+Testing
 
-Do not upload your `.env` file or database password to GitHub.
+API endpoints are tested using Postman by sending HTTP requests with JSON data.
 
+Database
 
+The project uses MySQL with two main tables:
+
+. users – Stores user account information and hashed passwords.
+
+. applications – Stores job application details associated with users.
+
+Security
+
+. Passwords are stored using password hashing.
+
+. JWT tokens are used for authentication.
+
+. Secret keys and database credentials are stored in environment variables.
+
+. Protected routes require authentication.
+
+Author
+
+B.Tech in Computer Science and Engineering (AI & ML), 2026 Graduate.

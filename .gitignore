@@ -1,3 +1,5 @@
 .venv/
 __pycache__/
 .env
+*.py[cod]
+job application tracker_backup/

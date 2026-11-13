@@ -2,7 +2,7 @@ import os
 import mysql.connector
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 
 def get_connected():
     connection=mysql.connector.connect(
@@ -16,7 +16,6 @@ def get_connected():
 # connection=mysql.connector.connect(
 #     host="localhost",
 #     user="root",
-#     password="***REMOVED***",
 #     database="job_tracker"
 # )
 # print("MySQL connected successfully!")
@@ -25,8 +24,7 @@ def get_connected():
 # def get_connected():
 #     connection=mysql.connector.connect(
 #         host="localhost",
-#         user="root",
-#         password="***REMOVED***",
+#         user="root",   
 #         database="job_tracker"
 #     )
 #     return connection
