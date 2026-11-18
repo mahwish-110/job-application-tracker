@@ -1,42 +1,56 @@
 Job Application Tracker
 
-A Python backend project built using Flask and MySQL to manage job applications securely through REST APIs.
+A full-stack Job Application Tracker built using Python, Flask, MySQL, and Streamlit. The application allows users to securely manage and track their job applications through a web-based dashboard and REST APIs.
 
 Features
 
-. User registration and login
+User registration and login
 
-. Password hashing for secure password storage
+Secure password hashing
 
-. JWT-based authentication
+JWT-based authentication
 
-. Protected API endpoints
+Protected API endpoints
 
-. Add new job applications
+Add new job applications
 
-. View job applications
+View all job applications
 
-. Update application status
+Update application status
 
-. Delete job applications
+Delete job applications
 
-. User-specific application management
+User-specific application management
 
-. Input validation and error handling
+Dashboard with application summary
 
-. MySQL database integration
+Interactive application tables
 
+Input validation and error handling
+
+MySQL database integration
 
 Technologies Used
 
-.Python
-.Flask
-.MySQL
-.MySQL Connector
-.PyJWT
-.Werkzeug
-.Python-dotenv
-.Postman for API testing
+Python
+
+Flask
+
+MySQL
+
+MySQL Connector
+
+Streamlit
+
+Requests
+
+PyJWT
+
+Werkzeug
+
+Python-dotenv
+
+Postman for API testing
 
 Project Structure
 
@@ -44,6 +58,7 @@ job-application-tracker/
 │
 ├── app.py
 ├── db.py
+├── streamlit_app.py
 ├── requirements.txt
 ├── README.md
 ├── .gitignore
@@ -51,29 +66,33 @@ job-application-tracker/
 
 Installation and Setup
 
-1.Clone the repository:
+1. Clone the repository
 
 git clone https://github.com/mahwish-110/job-application-tracker.git
 
-2.Navigate to the project folder:
+2. Navigate to the project folder
 
 cd job-application-tracker
 
-3.Create a virtual environment:
+3. Create a virtual environment
 
 python -m venv .venv
 
-4.Activate the virtual environment (Windows):
+4. Activate the virtual environment (Windows)
 
 .\.venv\Scripts\Activate.ps1
 
-5.Install dependencies:
+5. Install dependencies
 
 pip install -r requirements.txt
 
-6.Create a MySQL database named job_tracker.
+6. Configure MySQL
 
-7.Create a .env file in the project root and add your own configuration:
+Create a MySQL database named job_tracker.
+
+7. Configure environment variables
+
+Create a .env file in the project root and add your own configuration:
 
 DB_HOST=localhost
 DB_USER=your_mysql_username
@@ -83,47 +102,68 @@ SECRET_KEY=your_secret_key
 
 Important: Never upload your actual .env file or secret keys to GitHub.
 
-8.Run the Flask application:
+8. Run the Flask backend
+
+Open a terminal and run:
 
 python -m flask --app app run --debug
 
+The Flask backend will run at:
+
+http://127.0.0.1:5000
+
+9. Run the Streamlit frontend
+
+Open a second terminal, activate the same virtual environment, and run:
+
+streamlit run streamlit_app.py
+
+The Streamlit frontend will open in your browser, usually at:
+
+http://localhost:8501
+
+Keep both backend and frontend terminals running while using the application.
+
 API Endpoints
 
-
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/health` | Check API status |
-| GET | `/api/test-db` | Test database connection |
-| POST | `/api/register` | Register a new user |
-| POST | `/api/login` | Authenticate user |
-| GET | `/api/profile` | Get logged-in user profile |
-| GET | `/api/applications` | View applications |
-| POST | `/api/applications` | Add an application |
-| PUT | `/api/applications/<id>` | Update an application |
-| DELETE | `/api/applications/<id>` | Delete an application |
+Method	Endpoint	Description
 
 
-Testing
-
-API endpoints are tested using Postman by sending HTTP requests with JSON data.
+GET	/api/health	Check API status
+GET	/api/test-db	Test database connection
+POST	/api/register	Register a new user
+POST	/api/login	Authenticate user
+GET	/api/profile	Get logged-in user profile
+GET	/api/applications	View applications
+POST	/api/applications	Add an application
+PUT	/api/applications/<id>	Update an application
+DELETE	/api/applications/<id>	Delete an application
 
 Database
 
 The project uses MySQL with two main tables:
 
-. users – Stores user account information and hashed passwords.
+users: Stores user account information and hashed passwords.
 
-. applications – Stores job application details associated with users.
+applications: Stores job application details associated with individual users.
+
+Testing
+
+API endpoints are tested using Postman by sending HTTP requests with JSON data.
+
+The Streamlit frontend is used to test login, application management, and dashboard functionality.
 
 Security
 
-. Passwords are stored using password hashing.
+Passwords are stored using secure password hashing.
 
-. JWT tokens are used for authentication.
+JWT tokens are used for authentication.
 
-. Secret keys and database credentials are stored in environment variables.
+Database credentials and secret keys are stored in environment variables.
 
-. Protected routes require authentication.
+Protected routes require authentication.
+
+Application records are associated with individual users.
 
 Author
 
