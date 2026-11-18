@@ -129,15 +129,17 @@ API Endpoints
 Method	Endpoint	Description
 
 
-GET	/api/health	Check API status
-GET	/api/test-db	Test database connection
-POST	/api/register	Register a new user
-POST	/api/login	Authenticate user
-GET	/api/profile	Get logged-in user profile
-GET	/api/applications	View applications
-POST	/api/applications	Add an application
-PUT	/api/applications/<id>	Update an application
-DELETE	/api/applications/<id>	Delete an application
+| Method | Endpoint | Description |
+|:---:|---|---|
+| GET | `/api/health` | Check API status |
+| GET | `/api/test-db` | Test database connection |
+| POST | `/api/register` | Register a new user |
+| POST | `/api/login` | Authenticate user |
+| GET | `/api/profile` | Get logged-in user profile |
+| GET | `/api/applications` | View applications |
+| POST | `/api/applications` | Add an application |
+| PUT | `/api/applications/<id>` | Update an application |
+| DELETE | `/api/applications/<id>` | Delete an application |
 
 Database
 
