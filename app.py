@@ -5,10 +5,13 @@ from werkzeug.security import generate_password_hash,check_password_hash
 import jwt
 from datetime import datetime, timedelta, timezone
 from functools import wraps
+from dotenv import load_dotenv
+load_dotenv(override=True)
 import os
 
 app=Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+print("SECRET_KEY loaded:", bool(app.config["SECRET_KEY"]))
 
 def token_required(f):
     @wraps(f)
@@ -260,6 +263,7 @@ def login():
     "sub": str(user["id"]),
     "exp": datetime.now(timezone.utc) + timedelta(minutes=30)
 }
+    print("JWT key type:", type(app.config["SECRET_KEY"]))
     token = jwt.encode(payload, app.config["SECRET_KEY"], algorithm="HS256")
 
     cursor.close()
